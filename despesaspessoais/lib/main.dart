@@ -13,7 +13,16 @@ void main() {
 class ExpensesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MyHomePage());
+    return MaterialApp(
+      home: MyHomePage(),
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: Colors.purple[500],
+          secondary: Colors.pink[700],
+        ),
+      ),
+    );
   }
 }
 
@@ -81,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Container(
               child: Card(
-                color: Colors.blue,
+                color: Theme.of(context).primaryColor,
                 child: Text('Gráfico'),
                 elevation: 5,
               ),
