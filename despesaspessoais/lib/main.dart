@@ -1,3 +1,4 @@
+import 'package:despesaspessoais/components/chart.dart';
 import 'package:despesaspessoais/components/transaction_form.dart';
 import 'package:flutter/material.dart';
 import 'models/transaction.dart';
@@ -5,6 +6,7 @@ import 'components/transaction_form.dart';
 import 'components/transaction_list.dart';
 import 'dart:math';
 import '../models/transaction.dart';
+import 'components/chart.dart';
 
 void main() {
   runApp(ExpensesApp());
@@ -47,7 +49,34 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _transaction = [];
+  final List<Transaction> _transaction = [
+    Transaction(
+      id: 't0',
+      title: 'Conta Antiga',
+      value: 110.55,
+      date: DateTime.now().subtract(Duration(days: 33)),
+    ),
+    Transaction(
+      id: 't1',
+      title: 'Novos tênis',
+      value: 110.55,
+      date: DateTime.now().subtract(Duration(days: 3)),
+    ),
+    Transaction(
+      id: 't2',
+      title: 'Nova Bolsa',
+      value: 86.55,
+      date: DateTime.now().subtract(Duration(days: 4)),
+    ),
+  ];
+
+  List<Transaction> get _recentTransactions {
+    return _transaction.where((tr) {
+      return tr.date.isAfter(DateTime.now().subtract(
+        Duration(days: 7),
+      ));
+    }).toList();
+  }
 
   _addTransaction(String title, double value) {
     final newTransaction = Transaction(
@@ -90,13 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-              child: Card(
-                color: Theme.of(context).colorScheme.secondary,
-                child: Text('Gráfico'),
-                elevation: 5,
-              ),
-            ),
+            Chart(_recentTransactions),
             TransactionList(_transaction),
           ],
         ),
