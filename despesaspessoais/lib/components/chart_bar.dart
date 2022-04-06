@@ -15,7 +15,7 @@ class ChartBar extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        Text('R\$${value.toStringAsFixed(2)}'),
+        FittedBox(child: Text('${value.toStringAsFixed(2)}')),
         SizedBox(height: 5),
         Container(
           height: 60,
