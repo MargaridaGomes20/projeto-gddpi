@@ -26,15 +26,33 @@ class ExpensesApp extends StatelessWidget {
         textTheme: tema.textTheme.copyWith(
           headline6: TextStyle(
             fontFamily: 'Quicksand',
-            fontSize: 18,
+            fontSize: 17,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
           headline5: TextStyle(
             fontFamily: 'Quicksand',
-            fontSize: 18,
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+          ),
+          headline4: TextStyle(
+            fontFamily: 'Quicksand',
+            fontSize: 15,
             fontWeight: FontWeight.bold,
             color: Colors.white,
+          ),
+          headline3: TextStyle(
+            fontFamily: 'Quicksand',
+            fontSize: 12,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+          headline2: TextStyle(
+            fontFamily: 'Quicksand',
+            fontSize: 13,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
           ),
         ),
         appBarTheme: AppBarTheme(
